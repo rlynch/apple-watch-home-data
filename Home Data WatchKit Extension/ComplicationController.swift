@@ -14,11 +14,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Configuration
     
     func getSupportedTimeTravelDirectionsForComplication(complication: CLKComplication, withHandler handler: (CLKComplicationTimeTravelDirections) -> Void) {
-        handler([.Forward, .Backward])
+        handler([.Backward]) //only go backwards in time, no future dates :-)
     }
     
     func getTimelineStartDateForComplication(complication: CLKComplication, withHandler handler: (NSDate?) -> Void) {
-        handler(nil)
+        handler(NSDate(timeIntervalSinceNow: (-60 * 60 * 24))) //go 24 hours back
     }
     
     func getTimelineEndDateForComplication(complication: CLKComplication, withHandler handler: (NSDate?) -> Void) {
